@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ChargingStation/ChargingStation.csproj" />
+  <Project Path="EnergyAPIs/EnergyAPIs.csproj" Id="d6d8964d-7175-4e28-b349-5b9581e253ad" />
+  <Project Path="EnergyDataIngestor/EnergyDataIngestor.csproj" />
+</Solution>
