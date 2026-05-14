@@ -5,16 +5,18 @@ mimicking charger data, a background worker ingests and persists them to MongoDB
 the data for querying.
 
 ## Architecture
-[ChargingStation] --MQTT--> [EnergyDataIngestor (.NET Worker Service)]
-|
-v
-[MongoDB (NoSQL)]
-|
-v
-[EnergyAPIs (ASP.NET Core REST)]
-|
-v
-[HTTP Client]
+```
+[ChargingStation] --MQTT--> [EnergyDataIngestor  (.NET Worker Service)]
+                                          |
+                                          v
+                                [MongoDB (NoSQL)]
+                                          |
+                                          v
+                               [EnergyApi (ASP.NET Core REST)]
+                                          |
+                                          v
+                               [HTTP Client]
+```
 
 ## Prerequisites
 
@@ -132,10 +134,12 @@ GET /api/stations/{stationId}/telemetry?from={ISO8601}&to={ISO8601}
 
 ### Swagger UI
 
-An interactive API explorer is available at:
-http://localhost:{port}/swagger
+An interactive API explorer is available
 
 ## Project Structure
-/ChargingStation        # Publishes simulated MQTT telemetry
-/EnergyDataIngestor     # .NET Worker Service — subscribes to MQTT, persists to MongoDB
-/EnergyAPIs             # ASP.NET Core REST API — serves telemetry data over HTTP
+/ChargingStation - Publishes simulated MQTT telemetry
+
+/EnergyDataIngestor - NET Worker Service which subscribes to MQTT, persists to MongoDB
+
+/EnergyAPIs - ASP.NET Core REST API that serves telemetry data over HTTP
+
